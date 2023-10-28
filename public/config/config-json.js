@@ -1,10 +1,10 @@
 module.exports = function configJSON(req) {
-    var fullURL = `https://${req.headers.host}`
+	var fullURL = `https://${req.headers.host}`
 
 	return {
 		"workflowApiVersion": "1.1",
 		"metaData": {
-			"icon": "../images/custom-activity.png",
+			"icon": "../images/test.png",
 			"category": "message"
 		},
 		"type": "Rest",
@@ -19,29 +19,17 @@ module.exports = function configJSON(req) {
 					"shortcode": 1234
 				}],
 				"outArguments": [],
-				"timeout": 20000,
-				"retryCount": 0,
-				"retryDelay": 1000,
+				"timeout": 100000,
+				"retryCount": 1,
+				"retryDelay": 10000,
 				"concurrentRequests" : 5,
 				"url": `${fullURL}/execute`
 			}
 		},
 		"configurationArguments": {
-			"applicationExtensionKey": "uniqueKey-CA",
-            "save": {
-				"url": `${fullURL}/save`
-			},
+			"applicationExtensionKey": "ca_example",
 			"publish": {
 				"url": `${fullURL}/publish`
-			},
-			"unpublish": {
-				"url": `${fullURL}/unpublish`
-			},
-			"validate": {
-				"url": `${fullURL}/validate`
-			},
-			"stop": {
-				"url": `${fullURL}/stop`
 			}
 		},
 		"wizardSteps": [
@@ -51,16 +39,13 @@ module.exports = function configJSON(req) {
 			},
 			{
 				"label": "Step 2",
-				"key": "step2",
-                "active": false
+				"key": "step2"
 			}
 		],
 		"userInterfaces": {
-            "configModal": {
-                "height": 200,
-                "width": 300,
-                "fullscreen": true
-            }
+			"configModal": {
+				"fullscreen": true
+			}
 		},
 		"schema": {
 			"arguments": {
