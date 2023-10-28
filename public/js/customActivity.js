@@ -73,6 +73,9 @@ define([
             });
         });
 
+        $("#message1").html(field1);
+        $("#message2").html(JSON.stringify(field2));
+
 
         if (!field1) {
             showStep(null, 1);
