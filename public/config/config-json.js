@@ -56,10 +56,10 @@ module.exports = function configJSON(req) {
 			}
 		],
 		"userInterfaces": {
-			configurationSupportsReadOnlyMode : true,
-            configInspector: {
-                size: 'scm-lg',
-                emptyIframe: true
+            "configModal": {
+                "height": 200,
+                "width": 300,
+                "fullscreen": true
             }
 		},
 		"schema": {
