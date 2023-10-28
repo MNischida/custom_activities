@@ -45,8 +45,7 @@ define([
         }
 
         if (payload["arguments"]) {
-            $("#message1").html("true");
-            $("#message2").html(JSON.stringify(payload));
+            $("#message1").html(JSON.stringify(payload["arguments"].execute.inArguments));
         } else {
             $("#message1").html("false");
         }
