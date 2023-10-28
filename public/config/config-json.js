@@ -54,10 +54,12 @@ module.exports = function configJSON(req) {
 			}
 		],
 		"userInterfaces": {
-			"configModal": {
-				"fullscreen": true
-			}
-		},
+            "configModal": {
+                "height": 200,
+                "width": 300,
+                "fullscreen": true
+            }
+          },
 		"schema": {
 			"arguments": {
 				"execute": {
