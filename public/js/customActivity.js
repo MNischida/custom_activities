@@ -44,7 +44,7 @@ define([
             payload = data;
         }
 
-        $("#message").html(payload);
+        $("#message").html(data);
 
         var hasInArguments = Boolean(
             payload["arguments"] &&
