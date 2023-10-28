@@ -52,17 +52,22 @@ define([
             payload = data;
         }
 
-        var step1 = getField();
+        connection.trigger('updateButton', {
+            button: 'next',
+            enabled: true,
+        });
 
-        if (!step1) {
-            showStep(null, 1);
-            connection.trigger('updateButton', {
-                button: 'next',
-                enabled: false
-            })
-        } else {
-            showStep(null, 2);
-        }
+        // var step1 = getField();
+
+        // if (!step1) {
+        //     showStep(null, 1);
+        //     connection.trigger('updateButton', {
+        //         button: 'next',
+        //         enabled: false
+        //     })
+        // } else {
+        //     showStep(null, 2);
+        // }
     }
 
     function onClickedNext() {

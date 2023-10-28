@@ -15,8 +15,7 @@ module.exports = function configJSON(req) {
 		"arguments": {
 			"execute": {
 				"inArguments": [{
-					"myInArgument": "inArgument coming from iframe",
-					"shortcode": 1234
+					"myInArgument": "inArgument coming from iframe"
 				}],
 				"outArguments": [],
 				"timeout": 20000,
