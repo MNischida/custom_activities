@@ -22,7 +22,10 @@ server.get('/config.json', (req, res) => {
     res.status(200).json(configJSON(req));
 });
 
-
+// customActivity
+app.get('/customActivity.js', (req, res) => {
+    res.redirect('js/customActivity.js');
+});
 
 
 // ```````````````````````````````````````````````````````
