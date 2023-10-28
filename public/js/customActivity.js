@@ -34,13 +34,12 @@ define([
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $("#field1").change(function () {
-            var field1 = getData();
-            connection.trigger("updateButton", {
-              button: "next",
-              enabled: Boolean(field1)
+        $('#field1').change(function () {
+            connection.trigger('updateButton', {
+                button: 'next',
+                enabled: Boolean(getField())
             });
-          });
+        })
 
         console.log('Cheguei até aqui');
     }
@@ -113,7 +112,7 @@ define([
                 $("#step1").show();
                 connection.trigger("updateButton", {
                     button: "next",
-                    enabled: Boolean(getData()),
+                    enabled: Boolean(getField()),
                 });
                 connection.trigger("updateButton", {
                     button: "back",
@@ -168,6 +167,10 @@ define([
         } else {
             return null;
         }
+    }
+
+    function getField() {
+        return $('#field1').val()
     }
 
 
