@@ -1,6 +1,6 @@
 define([
     'postmonger'
-], function(
+], function (
     Postmonger
 ) {
     'use strict';
@@ -9,7 +9,6 @@ define([
     var payload = {};
 
     var steps = [
-        // initialize to the same value as what's set in config.json for consistency
         { label: 'Step 1', key: 'step1' },
         { label: 'Step 2', key: 'step2' }
     ];
@@ -24,22 +23,23 @@ define([
 
     connection.on('clickedNext', onClickedNext);
     connection.on('clickedBack', onClickedBack);
-    connection.on('gotoStep', onGotoStep);
+    connection.on('gotoStep', onGoToStep);
 
     function onRender() {
-        // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
 
-        // Disable the next button if a value isn't selected
+
         $('#field1').change(function () {
             connection.trigger('updateButton', {
                 button: 'next',
                 enabled: Boolean(getField())
             });
         })
+
+
     }
 
     function initialize(data) {
@@ -48,17 +48,6 @@ define([
         }
 
         var step1 = getField();
-
-        // var hasInArguments = Boolean(
-        //     payload['arguments'] &&
-        //     payload['arguments'].execute &&
-        //     payload['arguments'].execute.inArguments &&
-        //     payload['arguments'].execute.inArguments.length > 0
-        // );
-
-        // var inArguments = hasInArguments
-        //     ? payload['arguments'].execute.inArguments
-        //     : {};
 
         if (!step1) {
             showStep(null, 1);
@@ -83,9 +72,9 @@ define([
         connection.trigger('prevStep');
     }
 
-    function onGotoStep(step) {
+    function onGoToStep(step) {
         showStep(step);
-        connection.trigger('ready')
+        connection.trigger('ready');
     }
 
     function showStep(step, stepIndex) {
@@ -124,54 +113,34 @@ define([
         }
     }
 
-    function save() {
-        payload['arguments'].execute.inArguments[0].field1 = $('#field1').val();
-        payload['arguments'].execute.inArguments[0].field2 = $('#field2').val();
-    }
-
-
     function onGetTokens(tokens) {
-        // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
-        // console.log(tokens);
+    // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
+    // console.log(tokens);
     }
-    
+
     function onGetEndpoints(endpoints) {
-        // Response: endpoints = { restHost: <url> } i.e. 'rest.s1.qa1.exacttarget.com'
-        // console.log(endpoints);
+    // Response: endpoints = { restHost: <url> } i.e. 'rest.s1.qa1.exacttarget.com'
+    // console.log(endpoints);
     }
 
+    function save() {
+        var eventDefinitionKey;
 
-    function deFields() {
-        connection.trigger('requestSchema');
+        connection.trigger('requestTriggerEventDefinition');
 
-        connection.on('requestedSchema', function (data) {
-            console.log('*** Schema ***', JSON.stringify(data['schema']));
+        connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+
+            payload['arguments'].execute.inArguments[0].telefone = '{{Event.' + eventDefinitionKey + '.Telefone}}'
+            payload['arguments'].execute.inArguments[0].field1 = $('#field1').val();
+            payload['arguments'].execute.inArguments[0].field2 = $('#field2').val();
+            
+            payload['metaData'].isConfigured = true;
+            connection.trigger('updateActivity', payload);
         })
-    }
-
-    function getData() {
-        var input = $('#field1');
-
-        if (input.val()) {
-            return input.val();
-        } else {
-            return null;
-        }
     }
 
     function getField() {
         return $('#field1').val()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-});
+})
