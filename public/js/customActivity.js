@@ -46,8 +46,6 @@ define([
 
         var field1 = payload['arguments'].execute.inArguments[0].field1;
 
-        $("#field1").val(field1);
-
         
 
         var hasInArguments = Boolean(
@@ -60,6 +58,30 @@ define([
         var inArguments = hasInArguments
             ? payload["arguments"].execute.inArguments
             : {};
+
+        $.each(inArguments, function (index, inArgument) {
+            $.each(inArgument, function (key, val) {
+                if (key === "field1") {
+                    field1 = val;
+                } else if (key === "field2") {
+                    field2 = val;
+                }
+            });
+        });
+
+        if (!field1) {
+            showStep(null, 1);
+            connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
+        } else if (field1 && !field2) {
+            $("#field1").val(field1);
+            showStep(null, 2);
+            connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
+        } else {
+            $("#field1").val(field1);
+            $("#field2").val(field2);
+            showStep(null, 2);
+        }
+        
 
         connection.trigger('updateButton', {
             button: 'next',
