@@ -26,13 +26,13 @@ define([ 'postmonger' ], function(Postmonger) {
         connection.trigger("ready");
 
         // Disable the next button if a value isn't selected
-        $("#field1").change(function () {
-            var field1 = getData();
-            connection.trigger("updateButton", {
-              button: "next",
-              enabled: Boolean(field1)
-            });
-          });
+        // $("#field1").change(function () {
+        //     var field1 = getData();
+        //     connection.trigger("updateButton", {
+        //       button: "next",
+        //       enabled: Boolean(field1)
+        //     });
+        //   });
     }
 
     function initialize(data) {
