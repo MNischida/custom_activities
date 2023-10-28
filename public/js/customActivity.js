@@ -40,8 +40,6 @@ define([
                 enabled: Boolean(getField())
             });
         })
-
-        console.log('Cheguei até aqui');
     }
 
     function initialize(data) {
@@ -51,7 +49,8 @@ define([
 
         console.log(payload);
 
-        var field1;
+        var step1 = getField();
+
         var hasInArguments = Boolean(
             payload["arguments"] &&
             payload["arguments"].execute &&
@@ -63,19 +62,12 @@ define([
             ? payload["arguments"].execute.inArguments
             : {};
 
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-                if (key === "message") {
-                    field1 = val;
-                }
-            });
-        });
-
-        // If there is no message selected, disable the next button
-        if (!field1) {
+        if (!step1) {
             showStep(null, 1);
-            connection.trigger("updateButton", { button: "next", enabled: false });
-            // If there is a message, skip to the summary step
+            connection.trigger('updateButton', {
+                button: 'next',
+                enabled: false
+            })
         } else {
             showStep(null, 2);
         }
