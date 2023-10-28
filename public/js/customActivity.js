@@ -40,34 +40,34 @@ define([ 'postmonger' ], function(Postmonger) {
             payload = data;
         }
 
-        var field1;
-        var hasInArguments = Boolean(
-            payload["arguments"] &&
-            payload["arguments"].execute &&
-            payload["arguments"].execute.inArguments &&
-            payload["arguments"].execute.inArguments.length > 0
-        );
+        // var field1;
+        // var hasInArguments = Boolean(
+        //     payload["arguments"] &&
+        //     payload["arguments"].execute &&
+        //     payload["arguments"].execute.inArguments &&
+        //     payload["arguments"].execute.inArguments.length > 0
+        // );
 
-        var inArguments = hasInArguments
-            ? payload["arguments"].execute.inArguments
-            : {};
+        // var inArguments = hasInArguments
+        //     ? payload["arguments"].execute.inArguments
+        //     : {};
 
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-                if (key === "message") {
-                    field1 = val;
-                }
-            });
-        });
+        // $.each(inArguments, function (index, inArgument) {
+        //     $.each(inArgument, function (key, val) {
+        //         if (key === "message") {
+        //             field1 = val;
+        //         }
+        //     });
+        // });
 
-        // If there is no message selected, disable the next button
-        if (!field1) {
-            showStep(null, 1);
-            connection.trigger("updateButton", { button: "next", enabled: false });
-            // If there is a message, skip to the summary step
-        } else {
-            showStep(null, 2);
-        }
+        // // If there is no message selected, disable the next button
+        // if (!field1) {
+        //     showStep(null, 1);
+        //     connection.trigger("updateButton", { button: "next", enabled: false });
+        //     // If there is a message, skip to the summary step
+        // } else {
+        //     showStep(null, 2);
+        // }
     }
 
     function onClickedNext() {
