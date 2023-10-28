@@ -74,7 +74,7 @@ define([
         });
 
         $("#message1").html(field1);
-        $("#message2").html(JSON.stringify(field2));
+        $("#message2").html(JSON.stringify(inArguments));
 
 
         // if (!field1) {
