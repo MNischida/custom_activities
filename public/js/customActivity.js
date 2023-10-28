@@ -47,20 +47,18 @@ define([
             payload = data;
         }
 
-        console.log(payload);
-
         var step1 = getField();
 
-        var hasInArguments = Boolean(
-            payload["arguments"] &&
-            payload["arguments"].execute &&
-            payload["arguments"].execute.inArguments &&
-            payload["arguments"].execute.inArguments.length > 0
-        );
+        // var hasInArguments = Boolean(
+        //     payload["arguments"] &&
+        //     payload["arguments"].execute &&
+        //     payload["arguments"].execute.inArguments &&
+        //     payload["arguments"].execute.inArguments.length > 0
+        // );
 
-        var inArguments = hasInArguments
-            ? payload["arguments"].execute.inArguments
-            : {};
+        // var inArguments = hasInArguments
+        //     ? payload["arguments"].execute.inArguments
+        //     : {};
 
         if (!step1) {
             showStep(null, 1);
