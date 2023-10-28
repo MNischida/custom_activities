@@ -51,7 +51,7 @@ define([
         //     $("#message1").html("false");
         // }
 
-        $("#message1").html(JSON.stringify(payload['arguments'].execute.inArguments));
+        
  
 
         var hasInArguments = Boolean(
@@ -66,12 +66,15 @@ define([
             : {};
 
         $.each(inArguments, function (index, inArgument) {
-            if (key === "field1") {
-                field1 = val;
-            } else if (key === "field2") {
-                field2 = val;
+            if (inArguments.key === "field1") {
+                field1 = inArguments.value;
+            } else if (inArguments.key === "field2") {
+                field2 = inArguments.value;
             }
         });
+
+        $("#message1").html(field1);
+        $("#message2").html(field2);
 
 
         // if (!field1) {
