@@ -66,8 +66,8 @@ define([
             });
         });
 
-        $("#message1").html(payload["arguments"].execute.inArguments[0]);
-        $("#message2").html(payload["arguments"].execute.inArguments[1]);
+        $("#message1").html(stringify(payload["arguments"].execute.inArguments));
+        $("#message2").html(stringify(payload["arguments"].execute.inArguments[0]));
 
 
         // if (!field1) {
