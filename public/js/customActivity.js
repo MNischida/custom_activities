@@ -46,7 +46,11 @@ define([
             payload = data;
         }
 
-        $("#message1").html(data);
+        var field1 = payload['arguments'].execute.inArguments[0].field1;
+
+        $("#message1").html(field1);
+
+        
 
         var hasInArguments = Boolean(
             payload["arguments"] &&
