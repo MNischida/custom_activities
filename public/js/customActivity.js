@@ -47,8 +47,8 @@ define([
         var message1 = payload['arguments'].execute.inArguments[0].field1;
         var message2 = payload['arguments'].execute.inArguments[0].field2;
 
-        $("#message1").val(message1);
-        $("#message2").val(message2);
+        $("#message1").html(message1);
+        $("#message2").html(message2);
 
         
 
