@@ -43,6 +43,12 @@ define([
         if (data) {
             payload = data;
         }
+
+        if (payload["arguments"]) {
+            $("#message1").html("true");
+        } else {
+            $("#message1").html("false");
+        }
  
 
         var hasInArguments = Boolean(
@@ -65,9 +71,6 @@ define([
                 }
             });
         });
-
-        $("#message1").html(stringify(payload));
-        $("#message2").html(stringify(payload["arguments"].execute.inArguments[0]));
 
 
         // if (!field1) {
