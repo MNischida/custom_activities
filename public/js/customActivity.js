@@ -11,7 +11,7 @@ define([
     var steps = [
         // initialize to the same value as what's set in config.json for consistency
         { label: "Step 1", key: "step1" },
-        { label: "Step 2", key: "step2", active: false }
+        { label: "Step 2", key: "step2" }
     ];
 
     var currentStep = steps[0].key;
@@ -94,33 +94,33 @@ define([
         if (stepIndex && !step) {
             step = steps[stepIndex - 1];
         }
-    
+
         currentStep = step;
-    
-        $(".step").hide();
-    
+
+        $('.step').hide();
+
         switch (currentStep.key) {
-            case "step1":
-                $("#step1").show();
-                connection.trigger("updateButton", {
-                    button: "next",
-                    enabled: Boolean(getField()),
+            case 'step1':
+                $('#step1').show();
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    enabled: Boolean(getField())
                 });
-                connection.trigger("updateButton", {
-                    button: "back",
-                    visible: false,
+                connection.trigger('updateButton', {
+                    button: 'back',
+                    visible: false
                 });
                 break;
-            case "step2":
-                $("#step2").show();
-                connection.trigger("updateButton", {
-                    button: "back",
-                    visible: true,
+            case 'step2':
+                $('#step2').show();
+                connection.trigger('updateButton', {
+                    button: 'back',
+                    enabled: true
                 });
-                connection.trigger("updateButton", {
-                    button: "next",
-                    text: "Done",
-                    visible: true,
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    text: 'Done',
+                    visible: true
                 });
                 break;
         }
