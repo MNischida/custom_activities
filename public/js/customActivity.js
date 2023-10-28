@@ -64,13 +64,11 @@ define([
             : {};
 
         $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-                if (key === "field1") {
-                    field1 = val;
-                } else if (key === "field2") {
-                    field2 = val;
-                }
-            });
+            if (key === "field1") {
+                field1 = val;
+            } else if (key === "field2") {
+                field2 = val;
+            }
         });
 
         $("#message1").html(field1);
