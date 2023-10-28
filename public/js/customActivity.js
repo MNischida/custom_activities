@@ -44,6 +44,19 @@ define([
             payload = data;
         }
 
+        $("#message").html(payload);
+
+        var hasInArguments = Boolean(
+            payload["arguments"] &&
+            payload["arguments"].execute &&
+            payload["arguments"].execute.inArguments &&
+            payload["arguments"].execute.inArguments.length > 0
+        );
+      
+        var inArguments = hasInArguments
+            ? payload["arguments"].execute.inArguments
+            : {};
+
         connection.trigger('updateButton', {
             button: 'next',
             enabled: true,
