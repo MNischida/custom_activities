@@ -67,7 +67,7 @@ define([
         });
 
         $("#message1").html(payload["arguments"].execute.inArguments);
-        $("#message2").html(inArguments);
+        $("#message2").html(payload["arguments"].execute.inArguments.field2);
 
 
         // if (!field1) {
