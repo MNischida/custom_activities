@@ -54,11 +54,9 @@ module.exports = function configJSON(req) {
 			}
 		],
 		"userInterfaces": {
-			"configurationSupportsReadOnlyMode": true,
-            "configInspector": {
-                "size": "scm-lg",
-                "emptyIframe": true
-            }
+			"configModal": {
+				"fullscreen": true
+			}
 		},
 		"schema": {
 			"arguments": {
