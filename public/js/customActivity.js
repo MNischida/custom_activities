@@ -3,32 +3,32 @@ define([
 ], function(
     Postmonger
 ) {
-    "use strict";
+    'use strict';
 
     var connection = new Postmonger.Session();
     var payload = {};
 
     var steps = [
         // initialize to the same value as what's set in config.json for consistency
-        { label: "Step 1", key: "step1" },
-        { label: "Step 2", key: "step2" }
+        { label: 'Step 1', key: 'step1' },
+        { label: 'Step 2', key: 'step2' }
     ];
 
     var currentStep = steps[0].key;
 
     $(window).ready(onRender);
 
-    connection.on("initActivity", initialize);
+    connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
 
-    connection.on("clickedNext", onClickedNext);
-    connection.on("clickedBack", onClickedBack);
-    connection.on("gotoStep", onGotoStep);
+    connection.on('clickedNext', onClickedNext);
+    connection.on('clickedBack', onClickedBack);
+    connection.on('gotoStep', onGotoStep);
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
-        connection.trigger("ready");
+        connection.trigger('ready');
 
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
@@ -50,14 +50,14 @@ define([
         var step1 = getField();
 
         // var hasInArguments = Boolean(
-        //     payload["arguments"] &&
-        //     payload["arguments"].execute &&
-        //     payload["arguments"].execute.inArguments &&
-        //     payload["arguments"].execute.inArguments.length > 0
+        //     payload['arguments'] &&
+        //     payload['arguments'].execute &&
+        //     payload['arguments'].execute.inArguments &&
+        //     payload['arguments'].execute.inArguments.length > 0
         // );
 
         // var inArguments = hasInArguments
-        //     ? payload["arguments"].execute.inArguments
+        //     ? payload['arguments'].execute.inArguments
         //     : {};
 
         if (!step1) {
