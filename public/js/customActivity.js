@@ -31,13 +31,18 @@ define([
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
 
+        connection.trigger('updateButton', {
+            button: 'next',
+            enabled: true,
+        });
 
-        $('#field1').change(function () {
-            connection.trigger('updateButton', {
-                button: 'next',
-                enabled: Boolean(getField())
-            });
-        })
+
+        // $('#field1').change(function () {
+        //     connection.trigger('updateButton', {
+        //         button: 'next',
+        //         enabled: Boolean(getField())
+        //     });
+        // })
 
 
     }
