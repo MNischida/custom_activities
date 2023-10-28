@@ -54,10 +54,12 @@ module.exports = function configJSON(req) {
 			}
 		],
 		"userInterfaces": {
-            "configModal": {
-                "height": 200,
-                "width": 300
-            }
+            "configInspector": {
+                "size": "medium",
+                "hideHeader": true,
+                "emptyIframe": false
+            },
+            "configurationSupportsReadOnlyMode": true
           },
 		"schema": {
 			"arguments": {
