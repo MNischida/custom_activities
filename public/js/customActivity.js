@@ -77,18 +77,18 @@ define([
         $("#message2").html(JSON.stringify(field2));
 
 
-        if (!field1) {
-            showStep(null, 1);
-            connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
-        } else if (field1 && !field2) {
-            $("#field1").val(field1);
-            showStep(null, 2);
-            connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
-        } else {
-            $("#field1").val(field1);
-            $("#field2").val(field2);
-            showStep(null, 2);
-        }
+        // if (!field1) {
+        //     showStep(null, 1);
+        //     connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
+        // } else if (field1 && !field2) {
+        //     $("#field1").val(field1);
+        //     showStep(null, 2);
+        //     connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
+        // } else {
+        //     $("#field1").val(field1);
+        //     $("#field2").val(field2);
+        //     showStep(null, 2);
+        // }
         
 
         connection.trigger('updateButton', {
