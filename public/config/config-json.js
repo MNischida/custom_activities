@@ -4,7 +4,7 @@ module.exports = function configJSON(req) {
 	return {
 		"workflowApiVersion": "1.1",
 		"metaData": {
-			"icon": "../images/activity.png",
+			"icon": "../images/custom-activity.png",
 			"category": "message"
 		},
 		"type": "Rest",
@@ -43,9 +43,11 @@ module.exports = function configJSON(req) {
 			}
 		],
 		"userInterfaces": {
-			"configModal": {
-				"fullscreen": true
-			}
+			"configurationSupportsReadOnlyMode": true,
+            "configInspector": {
+            "size": "scm-lg",
+            "emptyIframe": true
+      }
 		},
 		"schema": {
 			"arguments": {
