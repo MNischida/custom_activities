@@ -14,6 +14,8 @@ define([ 'postmonger' ], function(Postmonger) {
     $(window).ready(onRender);
 
     connection.on("initActivity", initialize);
+    connection.on('requestedTokens', onGetTokens);
+    connection.on('requestedEndpoints', onGetEndpoints);
 
     connection.on("clickedNext", onClickedNext);
     connection.on("clickedBack", onClickedBack);
@@ -127,7 +129,15 @@ define([ 'postmonger' ], function(Postmonger) {
     }
 
 
-
+    function onGetTokens(tokens) {
+        // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
+        // console.log(tokens);
+    }
+    
+    function onGetEndpoints(endpoints) {
+        // Response: endpoints = { restHost: <url> } i.e. 'rest.s1.qa1.exacttarget.com'
+        // console.log(endpoints);
+    }
 
 
     function deFields() {
