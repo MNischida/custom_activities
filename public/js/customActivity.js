@@ -37,6 +37,8 @@ define([
                 enabled: Boolean(getField())
             });
         })
+
+        $("#message1").html(data);
     }
 
     function initialize(data) {
@@ -44,7 +46,7 @@ define([
             payload = data;
         }
 
-        $("#message").html(data);
+        $("#message1").html(data);
 
         var hasInArguments = Boolean(
             payload["arguments"] &&
