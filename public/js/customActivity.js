@@ -177,12 +177,12 @@ define([
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 
-            payload['arguments'].execute.inArguments = [
+            payload['arguments'].execute.inArguments.push(
                 {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
                 {field1: $('#field1').val()},
                 {field2: $('#field2').val()}
-            ]
-            
+            )
+                
             payload['metaData'].isConfigured = true;
             connection.trigger('updateActivity', payload);
         })
