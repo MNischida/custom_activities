@@ -53,7 +53,7 @@ define([
 
         
  
-
+        var field1, field2
         var hasInArguments = Boolean(
             payload["arguments"] &&
             payload["arguments"].execute &&
