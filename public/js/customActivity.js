@@ -50,6 +50,8 @@ define([
         // } else {
         //     $("#message1").html("false");
         // }
+
+        $("#message1").html(JSON.stringify(payload['arguments'].execute.inArguments));
  
 
         var hasInArguments = Boolean(
@@ -70,9 +72,6 @@ define([
                 field2 = val;
             }
         });
-
-        $("#message1").html(field1);
-        $("#message2").html(payload["arguments"].execute.inArguments.length);
 
 
         // if (!field1) {
