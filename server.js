@@ -23,7 +23,7 @@ server.get('/config.json', (req, res) => {
 });
 
 // customActivity
-app.get('/customActivity.js', (req, res) => {
+server.get('/customActivity.js', (req, res) => {
     res.redirect('js/customActivity.js');
 });
 
