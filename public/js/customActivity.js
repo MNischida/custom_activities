@@ -66,7 +66,7 @@ define([
             });
         });
 
-        $("#message1").html(stringify(payload["arguments"].execute.inArguments));
+        $("#message1").html(stringify(payload));
         $("#message2").html(stringify(payload["arguments"].execute.inArguments[0]));
 
 
