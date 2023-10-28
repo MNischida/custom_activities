@@ -44,7 +44,11 @@ define([
             payload = data;
         }
 
-        var field1 = payload['arguments'].execute.inArguments[0].field1;
+        var message1 = payload['arguments'].execute.inArguments[0].field1;
+        var message2 = payload['arguments'].execute.inArguments[0].field2;
+
+        $("#message1").val(message1);
+        $("#message2").val(message2);
 
         
 
