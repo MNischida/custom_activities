@@ -44,12 +44,12 @@ define([
             payload = data;
         }
 
-        if (payload["arguments"]) {
-            $("#message1").html(JSON.stringify(payload));
-            $("#message2").html('<br />' + JSON.stringify(payload["arguments"].execute.inArguments));
-        } else {
-            $("#message1").html("false");
-        }
+        // if (payload["arguments"]) {
+        //     $("#message1").html(JSON.stringify(payload));
+        //     $("#message2").html('<br />' + JSON.stringify(payload["arguments"].execute.inArguments));
+        // } else {
+        //     $("#message1").html("false");
+        // }
  
 
         var hasInArguments = Boolean(
@@ -74,18 +74,18 @@ define([
         });
 
 
-        // if (!field1) {
-        //     showStep(null, 1);
-        //     connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
-        // } else if (field1 && !field2) {
-        //     $("#field1").val(field1);
-        //     showStep(null, 2);
-        //     connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
-        // } else {
-        //     $("#field1").val(field1);
-        //     $("#field2").val(field2);
-        //     showStep(null, 2);
-        // }
+        if (!field1) {
+            showStep(null, 1);
+            connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
+        } else if (field1 && !field2) {
+            $("#field1").val(field1);
+            showStep(null, 2);
+            connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
+        } else {
+            $("#field1").val(field1);
+            $("#field2").val(field2);
+            showStep(null, 2);
+        }
         
 
         connection.trigger('updateButton', {
