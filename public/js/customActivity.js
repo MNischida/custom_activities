@@ -41,12 +41,16 @@ define([
         //       enabled: Boolean(field1)
         //     });
         //   });
+
+        console.log('Cheguei até aqui');
     }
 
     function initialize(data) {
         if (data) {
             payload = data;
         }
+
+        console.log(payload);
 
         // var field1;
         // var hasInArguments = Boolean(
