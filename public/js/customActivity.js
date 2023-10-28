@@ -66,8 +66,8 @@ define([
             });
         });
 
-        $("#message1").html(field1);
-        $("#message2").html(field2);
+        $("#message1").html(hasInArguments);
+        $("#message2").html(inArguments);
 
 
         // if (!field1) {
