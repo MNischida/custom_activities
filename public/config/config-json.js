@@ -56,8 +56,7 @@ module.exports = function configJSON(req) {
 		"userInterfaces": {
             "configModal": {
                 "height": 200,
-                "width": 300,
-                "fullscreen": true
+                "width": 300
             }
           },
 		"schema": {
