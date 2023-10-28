@@ -38,7 +38,7 @@ define([
             });
         })
 
-        $("#message1").html(data);
+        $("#message2").html(data);
     }
 
     function initialize(data) {
