@@ -43,14 +43,7 @@ define([
         if (data) {
             payload = data;
         }
-
-        var message1 = payload['arguments'].execute.inArguments[0].field1;
-        var message2 = payload['arguments'].execute.inArguments[0].field2;
-
-        $("#message1").html(message1);
-        $("#message2").html(message2);
-
-        
+ 
 
         var hasInArguments = Boolean(
             payload["arguments"] &&
@@ -73,18 +66,22 @@ define([
             });
         });
 
-        if (!field1) {
-            showStep(null, 1);
-            connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
-        } else if (field1 && !field2) {
-            $("#field1").val(field1);
-            showStep(null, 2);
-            connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
-        } else {
-            $("#field1").val(field1);
-            $("#field2").val(field2);
-            showStep(null, 2);
-        }
+        $("#message1").html(field1);
+        $("#message2").html(field2);
+
+
+        // if (!field1) {
+        //     showStep(null, 1);
+        //     connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
+        // } else if (field1 && !field2) {
+        //     $("#field1").val(field1);
+        //     showStep(null, 2);
+        //     connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
+        // } else {
+        //     $("#field1").val(field1);
+        //     $("#field2").val(field2);
+        //     showStep(null, 2);
+        // }
         
 
         connection.trigger('updateButton', {
