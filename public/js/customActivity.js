@@ -45,7 +45,8 @@ define([
         }
 
         if (payload["arguments"]) {
-            $("#message1").html(JSON.stringify(payload["arguments"].execute.inArguments));
+            $("#message1").html(JSON.stringify(payload));
+            $("#message2").html('<br />' + JSON.stringify(payload["arguments"].execute.inArguments));
         } else {
             $("#message1").html("false");
         }
@@ -176,9 +177,11 @@ define([
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 
-            payload['arguments'].execute.inArguments[0].telefone = '{{Event.' + eventDefinitionKey + '.Telefone}}'
-            payload['arguments'].execute.inArguments[0].field1 = $('#field1').val();
-            payload['arguments'].execute.inArguments[0].field2 = $('#field2').val();
+            payload['arguments'].execute.inArguments = [{
+                telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}',
+                field1: $('#field1').val(),
+                field2: $('#field2').val()
+            }]
             
             payload['metaData'].isConfigured = true;
             connection.trigger('updateActivity', payload);
