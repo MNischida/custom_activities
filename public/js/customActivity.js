@@ -37,8 +37,6 @@ define([
                 enabled: Boolean(getField())
             });
         })
-
-        $("#message2").html(data);
     }
 
     function initialize(data) {
@@ -48,7 +46,7 @@ define([
 
         var field1 = payload['arguments'].execute.inArguments[0].field1;
 
-        $("#message1").html(field1);
+        $("#field1").val(field1);
 
         
 
