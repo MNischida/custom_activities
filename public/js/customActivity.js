@@ -70,7 +70,7 @@ define([
     }
 
     function onClickedBack() {
-        step++;
+        step--;
         gotoStep(step);
         connection.trigger('ready');
     }
