@@ -29,8 +29,6 @@ define([
                 enabled: Boolean(getField())
             });
         })
-
-        gotoStep(step);
     }
 
     function initialize(data) {
