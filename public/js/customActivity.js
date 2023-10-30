@@ -96,7 +96,7 @@ define([
                 });
                 connection.trigger('updateButton', {
                     button: 'next',
-                    text: 'Done',
+                    text: 'done',
                     visible: true
                 });
                 break;
