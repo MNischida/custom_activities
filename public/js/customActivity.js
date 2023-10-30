@@ -13,8 +13,6 @@ define([
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
-    connection.on('requestedTokens', onGetTokens);
-    connection.on('requestedEndpoints', onGetEndpoints);
 
     connection.on('clickedNext', onClickedNext);
     connection.on('clickedBack', onClickedBack);
@@ -22,9 +20,6 @@ define([
 
     function onRender() {
         connection.trigger('ready');
-
-        connection.trigger('requestTokens');
-        connection.trigger('requestEndpoints');
 
         $('#field1').change(function () {
             connection.trigger('updateButton', {
@@ -81,7 +76,7 @@ define([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getField())
+                    enabled: false
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -104,16 +99,6 @@ define([
                 save();
                 break;
         }
-    }
-
-    function onGetTokens(tokens) {
-    // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
-    // console.log(tokens);
-    }
-
-    function onGetEndpoints(endpoints) {
-    // Response: endpoints = { restHost: <url> } i.e. 'rest.s1.qa1.exacttarget.com'
-    // console.log(endpoints);
     }
 
     function save() {
