@@ -197,18 +197,24 @@ define([
                 {field2: $('#field2').val()}
             ]
 
-            for (const obj of objects) {
-                const index = iArg.findIndex(item => {
-                    return Object.keys(obj).every(key => item[key] == obj[key])
-                });
-
-                if (index !== -1) {
-                    const existingObject = iArg[index];
-                    Object.keys(obj).forEach(key => {
-                        existingObject[key] = obj[key];
-                    })
-                } else {
-                    iArg.push(obj);
+            for (const obj1 of objects) {
+                const chaves = Object.keys(obj1);
+                let encontrado = false;
+            
+                for (const objeto of iArg) {
+                    if (chaves.some(chave => objeto.hasOwnProperty(chave))) {
+                        encontrado = true;
+                        chaves.forEach(chave => {
+                            if (objeto.hasOwnProperty(chave)) {
+                                objeto[chave] = obj1[chave];
+                            }
+                        });
+                        break; // Saia do loop assim que encontrar o objeto correspondente
+                    }
+                }
+            
+                if (!encontrado) {
+                    iArg.push(obj1);
                 }
             }
 
