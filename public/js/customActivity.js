@@ -181,16 +181,6 @@ define([
 
             const iArg = payload['arguments'].execute.inArguments
 
-            // const fieldsToUpdate = ['telefone', 'field1', 'field2'];
-
-            // for (const field of fieldsToUpdate) {
-            //     if (inArguments.in([field])) {
-            //         inArguments.update(field, $('#' + field).val());
-            //     } else {
-            //         inArguments.push({field: $('#' + field).val()});
-            //     }
-            // }
-
             const objects = [
                 {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
                 {field1: $('#field1').val()},
@@ -217,12 +207,6 @@ define([
                     iArg.push(obj1);
                 }
             }
-
-            // payload['arguments'].execute.inArguments.push(
-            //     {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
-            //     {field1: $('#field1').val()},
-            //     {field2: $('#field2').val()}
-            // )
                 
             payload['metaData'].isConfigured = true;
             connection.trigger('updateActivity', payload);
