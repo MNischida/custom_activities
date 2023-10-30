@@ -21,7 +21,7 @@ define([
     function onRender() {
         connection.trigger('ready');
 
-        gotoStep(step);
+        $("#message1").html('Aqui!');
 
         $('#field1').change(function () {
             connection.trigger('updateButton', {
@@ -29,6 +29,8 @@ define([
                 enabled: Boolean(getField())
             });
         })
+
+        gotoStep(step);
     }
 
     function initialize(data) {
