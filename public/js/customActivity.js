@@ -43,19 +43,19 @@ define([
 
         $("#message1").html('teste');
 
-        if (!field1) {
-            step = 1;
-            gotoStep(step);
-            $("#message1").html('1');
-        } else if (field1 && !field2) {
-            step = 2;
-            gotoStep(step);
-            $("#message1").html('2');
-        } else {
-            step = 2;
-            gotoStep(step);
-            $("#message1").html('3');
-        }
+        // if (!field1) {
+        //     step = 1;
+        //     gotoStep(step);
+        //     $("#message1").html('1');
+        // } else if (field1 && !field2) {
+        //     step = 2;
+        //     gotoStep(step);
+        //     $("#message1").html('2');
+        // } else {
+        //     step = 2;
+        //     gotoStep(step);
+        //     $("#message1").html('3');
+        // }
     }
 
     function onClickedNext() {
