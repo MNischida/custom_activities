@@ -75,7 +75,7 @@ define([
             }
         });
 
-        $("#message1").html(JSON.stringify(payload));
+        //$("#message1").html(JSON.stringify(payload));
 
 
         // if (!field1) {
