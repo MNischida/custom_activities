@@ -56,10 +56,8 @@ define([
 
         if (!field1) {
             showStep(null, 1);
-            connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
         } else if (field1 && !field2) {
             showStep(null, 2);
-            connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
         } else {
             showStep(null, 2);
         }
