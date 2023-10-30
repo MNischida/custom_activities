@@ -21,7 +21,7 @@ define([
     function onRender() {
         connection.trigger('ready');
 
-        $("#message1").html('Aqui!');
+        $("#message1").html(step);
 
         $('#field1').change(function () {
             connection.trigger('updateButton', {
