@@ -73,7 +73,7 @@ define([
     }
 
     function onGotoStep(step) {
-        showStep(step);
+        gotoStep(step);
         connection.trigger("ready");
     }
 
