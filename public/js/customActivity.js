@@ -23,7 +23,7 @@ define([
 
     connection.on('clickedNext', onClickedNext);
     connection.on('clickedBack', onClickedBack);
-    connection.on('gotoStep', onGoToStep);
+    connection.on('gotoStep', gotoStep);
 
     function onRender() {
         connection.trigger('ready');
