@@ -191,11 +191,25 @@ define([
             //     }
             // }
 
-            payload['arguments'].execute.inArguments.push(
+            const objects = [
                 {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
                 {field1: $('#field1').val()},
                 {field2: $('#field2').val()}
-            )
+            ]
+
+            for (const object of objects) {
+                if (inArguments.include(object)) {
+                    inArguments.update(object)
+                } else {
+                    inArguments.push(object)
+                }
+            }
+
+            // payload['arguments'].execute.inArguments.push(
+            //     {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
+            //     {field1: $('#field1').val()},
+            //     {field2: $('#field2').val()}
+            // )
                 
             payload['metaData'].isConfigured = true;
             connection.trigger('updateActivity', payload);
