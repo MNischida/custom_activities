@@ -13,7 +13,7 @@ define([
         { label: 'Step 2', key: 'step2' }
     ];
 
-    var currentStep = steps[0].key;
+    var step = 1;
 
     $(window).ready(onRender);
 
@@ -52,45 +52,34 @@ define([
         $("#message1").html(JSON.stringify(payload));
 
         if (!field1) {
-            showStep(null, 1);
+            gotoStep(1);
             $("#message1").html('1');
         } else if (field1 && !field2) {
-            showStep(null, 2);
+            gotoStep(2);
             $("#message1").html('2');
         } else {
-            showStep(null, 2);
+            gotoStep(3);
             $("#message1").html('3');
         }
     }
 
     function onClickedNext() {
-        if (currentStep.key === 'step2') {
-            save();
-        } else {
-            connection.trigger('nextStep');
-        }
-    }
-
-    function onClickedBack() {
-        connection.trigger('prevStep');
-    }
-
-    function onGoToStep(step) {
-        showStep(step);
+        step++;
+        gotoStep(step);
         connection.trigger('ready');
     }
 
-    function showStep(step, stepIndex) {
-        if (stepIndex && !step) {
-            step = steps[stepIndex - 1];
-        }
+    function onClickedBack() {
+        step++;
+        gotoStep(step);
+        connection.trigger('ready');
+    }
 
-        currentStep = step;
-
+    function gotoStep(step) {
         $('.step').hide();
 
-        switch (currentStep.key) {
-            case 'step1':
+        switch (step) {
+            case 1:
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
@@ -101,7 +90,7 @@ define([
                     visible: false
                 });
                 break;
-            case 'step2':
+            case 2:
                 $('#step2').show();
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -112,6 +101,9 @@ define([
                     text: 'Done',
                     visible: true
                 });
+                break;
+            case 3:
+                save();
                 break;
         }
     }
