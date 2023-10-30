@@ -8,11 +8,6 @@ define([
     var connection = new Postmonger.Session();
     var payload = {};
 
-    var steps = [
-        { label: 'Step 1', key: 'step1' },
-        { label: 'Step 2', key: 'step2' }
-    ];
-
     var step = 1;
 
     $(window).ready(onRender);
@@ -52,13 +47,16 @@ define([
         $("#message1").html(JSON.stringify(payload));
 
         if (!field1) {
-            gotoStep(1);
+            step = 1;
+            gotoStep(step);
             $("#message1").html('1');
         } else if (field1 && !field2) {
-            gotoStep(2);
+            step = 2;
+            gotoStep(step);
             $("#message1").html('2');
         } else {
-            gotoStep(2);
+            step = 2;
+            gotoStep(step);
             $("#message1").html('3');
         }
     }
