@@ -51,8 +51,7 @@ define([
         //     $("#message1").html("false");
         // }
 
-        
- 
+
         var field1, field2
         var hasInArguments = Boolean(
             payload["arguments"] &&
@@ -180,11 +179,23 @@ define([
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 
-            payload['arguments'].execute.inArguments.push(
-                {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
-                {field1: $('#field1').val()},
-                {field2: $('#field2').val()}
-            )
+            const inArguments = payload['arguments'].execute.inArguments
+
+            const fieldsToUpdate = ['telefone', 'field1', 'field2'];
+
+            for (const field of fieldsToUpdate) {
+                if (inArguments.in([field])) {
+                    inArguments.update(field, $('#' + field).val());
+                } else {
+                    inArguments.push({field: $('#' + field).val()});
+                }
+            }
+
+            // payload['arguments'].execute.inArguments.push(
+            //     {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
+            //     {field1: $('#field1').val()},
+            //     {field2: $('#field2').val()}
+            // )
                 
             payload['metaData'].isConfigured = true;
             connection.trigger('updateActivity', payload);
