@@ -46,11 +46,8 @@ define([
 
         var field1, field2
 
-        if (payload["arguments"].execute.inArguments[2].field1) {
-            field1 = $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
-        } else if (payload["arguments"].execute.inArguments[2].field2) {
-            field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
-        }
+        field1 = $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
+        field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
 
         //$("#message1").html(JSON.stringify(payload));
 
