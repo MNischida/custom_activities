@@ -16,7 +16,7 @@ define([
 
     connection.on('clickedNext', onClickedNext);
     connection.on('clickedBack', onClickedBack);
-    connection.on('gotoStep', gotoStep);
+    connection.on('gotoStep', onGotoStep);
 
     function onRender() {
         connection.trigger('ready');
@@ -70,6 +70,11 @@ define([
         step--;
         gotoStep(step);
         connection.trigger('ready');
+    }
+
+    function onGotoStep(step) {
+        showStep(step);
+        connection.trigger("ready");
     }
 
     function gotoStep(step) {
