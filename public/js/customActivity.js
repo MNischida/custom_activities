@@ -44,6 +44,9 @@ define([
             payload = data;
         }
 
+        $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
+        $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
+
         // if (payload["arguments"]) {
         //     $("#message1").html(JSON.stringify(payload));
         //     $("#message2").html('<br />' + JSON.stringify(payload["arguments"].execute.inArguments));
