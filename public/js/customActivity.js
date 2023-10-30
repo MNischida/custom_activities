@@ -72,7 +72,7 @@ define([
             }
         });
 
-        $("#message1").html(field1);
+        $("#message1").html(JSON.stringify(payload["arguments"].execute.inArguments));
         $("#message2").html(field2);
 
 
@@ -181,21 +181,21 @@ define([
 
             const inArguments = payload['arguments'].execute.inArguments
 
-            const fieldsToUpdate = ['telefone', 'field1', 'field2'];
+            // const fieldsToUpdate = ['telefone', 'field1', 'field2'];
 
-            for (const field of fieldsToUpdate) {
-                if (inArguments.in([field])) {
-                    inArguments.update(field, $('#' + field).val());
-                } else {
-                    inArguments.push({field: $('#' + field).val()});
-                }
-            }
+            // for (const field of fieldsToUpdate) {
+            //     if (inArguments.in([field])) {
+            //         inArguments.update(field, $('#' + field).val());
+            //     } else {
+            //         inArguments.push({field: $('#' + field).val()});
+            //     }
+            // }
 
-            // payload['arguments'].execute.inArguments.push(
-            //     {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
-            //     {field1: $('#field1').val()},
-            //     {field2: $('#field2').val()}
-            // )
+            payload['arguments'].execute.inArguments.push(
+                {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
+                {field1: $('#field1').val()},
+                {field2: $('#field2').val()}
+            )
                 
             payload['metaData'].isConfigured = true;
             connection.trigger('updateActivity', payload);
