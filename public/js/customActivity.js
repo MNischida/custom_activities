@@ -203,7 +203,10 @@ define([
                 });
 
                 if (index !== -1) {
-                    Object.assign(iArg[index], obj);
+                    const existingObject = iArg[index];
+                    Object.keys(obj).forEach(key => {
+                        existingObject[key] = obj[key];
+                    })
                 } else {
                     iArg.push(obj);
                 }
