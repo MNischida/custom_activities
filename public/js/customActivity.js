@@ -58,7 +58,7 @@ define([
             gotoStep(2);
             $("#message1").html('2');
         } else {
-            gotoStep(3);
+            gotoStep(2);
             $("#message1").html('3');
         }
     }
