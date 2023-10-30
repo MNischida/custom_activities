@@ -49,14 +49,17 @@ define([
         field1 = $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
         field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
 
-        //$("#message1").html(JSON.stringify(payload));
+        $("#message1").html(JSON.stringify(payload));
 
         if (!field1) {
             showStep(null, 1);
+            $("#message1").html('1');
         } else if (field1 && !field2) {
             showStep(null, 2);
+            $("#message1").html('2');
         } else {
             showStep(null, 2);
+            $("#message1").html('3');
         }
     }
 
