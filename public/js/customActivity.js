@@ -72,8 +72,7 @@ define([
             }
         });
 
-        $("#message1").html(JSON.stringify(payload["arguments"].execute.inArguments));
-        $("#message2").html(field2);
+        $("#message1").html(JSON.stringify(payload));
 
 
         // if (!field1) {
