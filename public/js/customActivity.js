@@ -44,67 +44,22 @@ define([
             payload = data;
         }
 
-        $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
-        $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
-
-        // if (payload["arguments"]) {
-        //     $("#message1").html(JSON.stringify(payload));
-        //     $("#message2").html('<br />' + JSON.stringify(payload["arguments"].execute.inArguments));
-        // } else {
-        //     $("#message1").html("false");
-        // }
-
-
         var field1, field2
-        var hasInArguments = Boolean(
-            payload["arguments"] &&
-            payload["arguments"].execute &&
-            payload["arguments"].execute.inArguments &&
-            payload["arguments"].execute.inArguments.length > 0
-        );
-      
-        var inArguments = hasInArguments
-            ? payload["arguments"].execute.inArguments
-            : {};
 
-        $.each(inArguments, function (index, inArgument) {
-            if (inArguments.key === "field1") {
-                field1 = inArguments.value;
-            } else if (inArguments.key === "field2") {
-                field2 = inArguments.value;
-            }
-        });
+        if (payload["arguments"].execute.inArguments[2].field1) {
+            field1 = $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
+        } else if (payload["arguments"].execute.inArguments[2].field2) {
+            field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
+        }
 
         //$("#message1").html(JSON.stringify(payload));
 
-
-        // if (!field1) {
-        //     showStep(null, 1);
-        //     connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
-        // } else if (field1 && !field2) {
-        //     $("#field1").val(field1);
-        //     showStep(null, 2);
-        //     connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
-        // } else {
-        //     $("#field1").val(field1);
-        //     $("#field2").val(field2);
-        //     showStep(null, 2);
-        // }
-        
-
-        connection.trigger('updateButton', {
-            button: 'next',
-            enabled: true,
-        });
-
-        var step1 = getField();
-
-        if (!step1) {
+        if (!field1) {
             showStep(null, 1);
-            connection.trigger('updateButton', {
-                button: 'next',
-                enabled: false
-            })
+            connection.trigger("updateButton", { button: "next", enabled: Boolean(getField()) });
+        } else if (field1 && !field2) {
+            showStep(null, 2);
+            connection.trigger("updateButton", { button: "next", text: 'Done', enabled: false });
         } else {
             showStep(null, 2);
         }
