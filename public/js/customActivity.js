@@ -179,7 +179,7 @@ define([
         connection.on('requestedTriggerEventDefinition', function (eventDefinitionModel) {
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
 
-            const inArguments = payload['arguments'].execute.inArguments
+            const iArg = payload['arguments'].execute.inArguments
 
             // const fieldsToUpdate = ['telefone', 'field1', 'field2'];
 
@@ -197,11 +197,15 @@ define([
                 {field2: $('#field2').val()}
             ]
 
-            for (const object of objects) {
-                if (inArguments.include(object)) {
-                    inArguments.update(object)
+            for (const obj of objects) {
+                const index = iArg.findIndex(item => {
+                    return Object.keys(obj).every(key => item[key] == obj[key])
+                });
+
+                if (index !== -1) {
+                    Object.assign(iArg[index], obj);
                 } else {
-                    inArguments.push(object)
+                    iArg.push(obj);
                 }
             }
 
