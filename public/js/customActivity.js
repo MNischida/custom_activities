@@ -64,7 +64,7 @@ define([
     }
 
     function onClickedNext() {
-        if (currentSteo.key === 'step1') {
+        if (currentStep.key === 'step1') {
             connection.trigger("nextStep");
         } else {
             save();
