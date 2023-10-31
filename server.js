@@ -129,7 +129,7 @@ server.post('/execute', function(req, res) {
     console.log(JSON.stringify(payload));
 
     axios
-        .put(url, payload)
+        .post(url, payload)
         .then(resp => {
             return res.status(200).json(resp.data);
         })
