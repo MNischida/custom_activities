@@ -95,7 +95,7 @@ server.post('/unpublish', function(req, res) {
 server.post('/validate', function(req, res) {
     console.log('debug: /validate');
     const request = req.body;
-    console.log('Request InArgument: ' + JSON.stringify(request.inArguments));
+    console.log('Request InArgument: ' + JSON.stringify(request));
     return res.status(200).json({});
 });
 
@@ -142,19 +142,19 @@ server.post('/execute', function(req, res) {
         }
     }
 
-    const payload = request;
+    const payload = request.inArguments;
 
     console.log('Request InArgument: ' + JSON.stringify(request.inArguments));
 
-    // axios
-    //     .post(url, payload)
-    //     .then(resp => {
-    //         return res.status(200).json(resp.data);
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //         return res.status(500).json(error);
-    //     })
+    axios
+        .post(url, payload)
+        .then(resp => {
+            return res.status(200).json(resp.data);
+        })
+        .catch(error => {
+            console.error(error);
+            return res.status(500).json(error);
+        })
 
 
     
