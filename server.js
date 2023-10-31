@@ -5,7 +5,7 @@ const port = process.env.PORT || 3333;
 const axios = require('axios')
 
 // Set engine
-app.set('view engine', 'ejs');
+server.set('view engine', 'ejs');
 
 // Static
 server.use(express.static('public'));
