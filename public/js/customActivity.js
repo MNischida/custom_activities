@@ -46,8 +46,6 @@ define([
 
         $("#message1").html('teste');
 
-        showStep(null, 1);
-
         // if (!field1) {
         //     step = 1;
         //     gotoStep(step);
