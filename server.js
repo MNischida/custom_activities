@@ -124,7 +124,21 @@ server.post('/execute', function(req, res) {
 
     const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
 
-    const payload = request;
+    // Find the in argument
+    function getInArgument(k) {
+        if (request && request.inArguments) {
+            for (let i = 0; i < request.inArguments.length; i++) {
+                let e = request.inArguments[i];
+                if (k in e) {
+                    return e[k];
+                }
+            }
+        }
+    }
+
+    const payload = {
+        "telefone": getInArgument('telefone')
+    }
 
     console.log(JSON.stringify(payload));
 
@@ -139,17 +153,7 @@ server.post('/execute', function(req, res) {
         })
 
 
-    // Find the in argument
-    function getInArgument(k) {
-        if (request && request.inArguments) {
-            for (let i = 0; i < request.inArguments.length; i++) {
-                let e = request.inArguments[i];
-                if (k in e) {
-                    return e[k];
-                }
-            }
-        }
-    }
+    
 
     return res.status(200).json({});
 });
