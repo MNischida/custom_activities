@@ -44,8 +44,6 @@ define([
         field1 = $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
         field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
 
-        $("#message1").html(field1);
-
         if (field1) {
             connection.trigger('updateButton', {
                 button: 'next',
