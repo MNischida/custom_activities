@@ -8,7 +8,14 @@ define([
     var connection = new Postmonger.Session();
     var payload = {};
 
-    var step = 1;
+    var steps = [
+        // initialize to the same value as what's set in config.json for consistency
+        { label: "Step 1", key: "step1" },
+        { label: "Step 2", key: "step2" },
+        { label: "Step 3", key: "step3" },
+        { label: "Step 4", key: "step4", active: false },
+      ];
+      var currentStep = steps[0].key;
 
     $(window).ready(onRender);
 
@@ -43,6 +50,8 @@ define([
 
         $("#message1").html('teste');
 
+        showStep(null, 1);
+
         // if (!field1) {
         //     step = 1;
         //     gotoStep(step);
@@ -59,27 +68,33 @@ define([
     }
 
     function onClickedNext() {
-        step++;
-        gotoStep(step);
-        connection.trigger('ready');
+        if (currentSteo.key === 'step1') {
+            connection.trigger("nextStep");
+        } else {
+            save();
+        }
     }
 
     function onClickedBack() {
-        step--;
-        gotoStep(step);
-        connection.trigger('ready');
+        connection.trigger("prevStep");
     }
 
     function onGotoStep(step) {
-        gotoStep(step);
+        showStep(step);
         connection.trigger("ready");
     }
 
-    function gotoStep(step) {
+    function showStep(step, stepIndex) {
+        if (stepIndex && !step) {
+            step = steps[stepIndex - 1];
+        }
+
+        currentStep = step;
+
         $('.step').hide();
 
-        switch (step) {
-            case 1:
+        switch (currentStep.key) {
+            case 'step1':
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
@@ -90,7 +105,7 @@ define([
                     visible: false
                 });
                 break;
-            case 2:
+            case 'step2':
                 $('#step2').show();
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -101,9 +116,6 @@ define([
                     text: 'done',
                     visible: true
                 });
-                break;
-            case 3:
-                save();
                 break;
         }
     }
