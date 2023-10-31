@@ -122,11 +122,9 @@ server.post('/execute', function(req, res) {
 
     const request = req.body;
 
-    const url = 'https://en41sqg10alx8tl.m.pipedream.net'
+    const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
 
-    const payload = {
-        "teste": "teste"
-    }
+    const payload = request.inArguments;
 
     console.log(JSON.stringify(payload));
 
