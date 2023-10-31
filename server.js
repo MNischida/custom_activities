@@ -142,16 +142,17 @@ server.post('/execute', function(req, res) {
     console.log(payload);
     console.log(req);
     console.log(JSON.stringify(req));
+    console.log(request.inArguments[0].myInArgument);
 
-    axios
-        .post(url, payload)
-        .then(resp => {
-            return res.status(200).json(resp.data);
-        })
-        .catch(error => {
-            console.error(error);
-            return res.status(500).json(error);
-        })
+    // axios
+    //     .post(url, payload)
+    //     .then(resp => {
+    //         return res.status(200).json(resp.data);
+    //     })
+    //     .catch(error => {
+    //         console.error(error);
+    //         return res.status(500).json(error);
+    //     })
 
 
     
