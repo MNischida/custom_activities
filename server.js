@@ -145,7 +145,6 @@ server.post('/execute', function(req, res) {
     console.log('Payload Stringify: ' + JSON.stringify(payload));
     console.log('Payload: ' + payload);
     console.log('Req: ' + req);
-    console.log('Req Stringify: ' + JSON.stringify(req));
     console.log('Request myInArgument: ' + request.inArguments[0].myInArgument);
 
     // axios
