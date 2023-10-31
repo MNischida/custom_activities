@@ -2,6 +2,7 @@ const express = require('express')
 const server = express()
 const configJSON = require('./public/config/config-json.js')
 const port = process.env.PORT || 3333;
+const axios = require('axios')
 
 // Static
 server.use(express.static('public'));
@@ -121,7 +122,20 @@ server.post('/execute', function(req, res) {
 
     const request = req.body;
 
-    console.log(" req.body", JSON.stringify(req.body));
+    const url = 'https://en41sqg10alx8tl.m.pipedream.net'
+
+    const payload = request.inArguments
+
+    axios
+        .put(url, payload)
+        .then(resp => {
+            return res.status(200).json(resp.data);
+        })
+        .catch(error => {
+            console.error(error);
+            return res.status(500).json(error);
+        })
+
 
     // Find the in argument
     function getInArgument(k) {
