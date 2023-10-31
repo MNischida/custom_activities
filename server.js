@@ -147,9 +147,20 @@ server.post('/execute', function(req, res) {
         'Content-Type': 'application/json'
     }
 
+    const inArguments = request.inArguments
+
     console.log('Request InArgument: ' + JSON.stringify(request.inArguments));
 
-    axios
+    var selectedValue = null;
+
+    for (var i = 0; i < inArguments.length; i++) {
+        if ("selected" in inArguments[i]) {
+            selectedValue = json[i].selected;
+        }
+    }
+
+    if (selectedValue === 'httprequest') {
+        axios
         .post(url, payload, {
             headers: headers
         })
@@ -160,6 +171,10 @@ server.post('/execute', function(req, res) {
             console.error(error);
             return res.status(500).json(error);
         })
+    } else if (selectedValue === 'sms') {
+        console.log('SMS enviado');
+    }
+    
 
 
     
