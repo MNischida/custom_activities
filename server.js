@@ -94,8 +94,6 @@ server.post('/unpublish', function(req, res) {
  */
 server.post('/validate', function(req, res) {
     console.log('debug: /validate');
-    const request = req.body;
-    console.log('Request InArgument: ' + JSON.stringify(request));
     return res.status(200).json({});
 });
 
@@ -158,6 +156,8 @@ server.post('/execute', function(req, res) {
             selectedValue = json[i].selected;
         }
     }
+
+    console.log('valor selecionado: ' + selectedValue);
 
     if (selectedValue === 'httprequest') {
         axios
