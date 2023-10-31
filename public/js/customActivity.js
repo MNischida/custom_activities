@@ -33,6 +33,19 @@ define([
                 enabled: Boolean(getField('field1'))
             });
         })
+        $('#field2').change(function () {
+            connection.trigger('updateButton', {
+                button: 'next',
+                enabled: Boolean(getField('field2'))
+            });
+        })
+        $("#select").change(function () {
+            var message = getMessage();
+            connection.trigger("updateButton", {
+              button: "next",
+              text: "done",
+              enabled: Boolean(message),
+            });
     }
 
     function initialize(data) {
@@ -50,11 +63,6 @@ define([
             connection.trigger('updateButton', {
                 button: 'next',
                 enabled: Boolean(getField('field1'))
-            });
-        } else if (field2) {
-            connection.trigger('updateButton', {
-                button: 'next',
-                enabled: Boolean(getField('field2'))
             });
         }
     }
