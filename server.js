@@ -136,9 +136,7 @@ server.post('/execute', function(req, res) {
         }
     }
 
-    const payload = {
-        "telefone": getInArgument('telefone')
-    }
+    const payload = request;
 
     console.log(JSON.stringify(payload));
 
