@@ -139,6 +139,9 @@ server.post('/execute', function(req, res) {
     const payload = request;
 
     console.log(JSON.stringify(payload));
+    console.log(payload);
+    console.log(req);
+    console.log(JSON.stringify(req));
 
     axios
         .post(url, payload)
