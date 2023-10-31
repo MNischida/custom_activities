@@ -143,11 +143,16 @@ server.post('/execute', function(req, res) {
     }
 
     const payload = request.inArguments;
+    const headers = {
+        'Content-Type': 'application/json'
+    }
 
     console.log('Request InArgument: ' + JSON.stringify(request.inArguments));
 
     axios
-        .post(url, payload)
+        .post(url, payload, {
+            headers: headers
+        })
         .then(resp => {
             return res.status(200).json(resp.data);
         })
