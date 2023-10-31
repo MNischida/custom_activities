@@ -51,6 +51,11 @@ define([
                 button: 'next',
                 enabled: Boolean(getField('field1'))
             });
+        } else if (field2) {
+            connection.trigger('updateButton', {
+                button: 'next',
+                enabled: Boolean(getField('field2'))
+            });
         }
     }
 
