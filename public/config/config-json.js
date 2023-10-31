@@ -62,8 +62,7 @@ module.exports = function configJSON(req) {
                 "size": "medium",
                 "hideHeader": true,
                 "emptyIframe": false
-            },
-            "configurationSupportsReadOnlyMode": true
+            }
           },
 		"schema": {
 			"arguments": {
