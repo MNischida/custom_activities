@@ -142,10 +142,7 @@ server.post('/execute', function(req, res) {
 
     const payload = request;
 
-    console.log('Payload Stringify: ' + JSON.stringify(payload));
-    console.log('Payload: ' + payload);
-    console.log('Req: ' + req);
-    console.log('Request myInArgument: ' + request.inArguments[0].myInArgument);
+    console.log('Request InArgument: ' + request.inArguments);
 
     // axios
     //     .post(url, payload)
