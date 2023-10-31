@@ -1,5 +1,5 @@
 module.exports = function configJSON(req) {
-    var fullURL = `https://${req.headers.host}`
+    var fullURL = `https://${req.get('host')}`
 
 	return {
 		"workflowApiVersion": "1.1",
@@ -19,11 +19,10 @@ module.exports = function configJSON(req) {
 				}],
 				"outArguments": [],
 				"timeout": 20000,
-				"retryCount": 0,
+				"retryCount": 1,
 				"retryDelay": 1000,
 				"concurrentRequests" : 5,
-				//"url": `${fullURL}/execute`
-                "url": "https://eo8qif9pyzfou2p.m.pipedream.net"
+				"url": `${fullURL}/execute`
 			}
 		},
 		"configurationArguments": {
