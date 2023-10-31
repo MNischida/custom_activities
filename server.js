@@ -4,11 +4,15 @@ const configJSON = require('./public/config/config-json.js')
 const port = process.env.PORT || 3333;
 const axios = require('axios')
 
+// Set engine
+app.set('view engine', 'ejs');
+
 // Static
 server.use(express.static('public'));
 
 // Body parser
 server.use(express.urlencoded({ extended: true }));
+server.use(express.json())
 
 server.get('/', (req, res) => {
     res.redirect('/index.html')
