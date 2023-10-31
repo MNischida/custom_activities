@@ -30,7 +30,7 @@ define([
         $('#field1').change(function () {
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(getField())
+                enabled: Boolean(getField('field1'))
             });
         })
     }
@@ -49,7 +49,7 @@ define([
         if (field1) {
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(getField())
+                enabled: Boolean(getField('field1'))
             });
         }
     }
