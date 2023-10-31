@@ -11,7 +11,8 @@ define([
     var steps = [
         // initialize to the same value as what's set in config.json for consistency
         { label: "Step 1", key: "step1" },
-        { label: "Step 2", key: "step2" }
+        { label: "Step 2", key: "step2" },
+        { label: "Step 3", key: "step3" }
       ];
       var currentStep = steps[0].key;
 
@@ -39,10 +40,11 @@ define([
             payload = data;
         }
 
-        var field1, field2
+        var field1, field2, selected
 
         field1 = $("#field1").val(payload["arguments"].execute.inArguments[2].field1);
         field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
+        selected = $("#select").val(getMessage());
 
         if (field1) {
             connection.trigger('updateButton', {
@@ -53,7 +55,7 @@ define([
     }
 
     function onClickedNext() {
-        if (currentStep.key === 'step1') {
+        if (currentStep.key === 'step1' || currentStep.key === 'step2') {
             connection.trigger("nextStep");
         } else {
             save();
@@ -83,7 +85,7 @@ define([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getField())
+                    enabled: Boolean(getField('field1'))
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -98,8 +100,19 @@ define([
                 });
                 connection.trigger('updateButton', {
                     button: 'next',
+                    enabled: Boolean(getField('field2'))
+                });
+                break;
+            case 'step3':
+                $('#step3').show();
+                connection.trigger('updateButton', {
+                    button: 'back',
+                    enabled: true
+                });
+                connection.trigger('updateButton', {
+                    button: 'next',
                     text: 'done',
-                    visible: true
+                    enabled: Boolean(getMessage())
                 });
                 break;
         }
@@ -118,7 +131,8 @@ define([
             const objects = [
                 {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
                 {field1: $('#field1').val()},
-                {field2: $('#field2').val()}
+                {field2: $('#field2').val()},
+                {selected: getMessage()}
             ]
 
             for (const obj1 of objects) {
@@ -147,7 +161,11 @@ define([
         })
     }
 
-    function getField() {
-        return $('#field1').val()
+    function getField(field) {
+        return $('#' + field).val()
+    }
+
+    function getMessage() {
+        return $("#select").find("option:selected").attr("value").trim();
     }
 })

@@ -51,6 +51,10 @@ module.exports = function configJSON(req) {
 			{
 				"label": "Step 2",
 				"key": "step2"
+			},
+            {
+				"label": "Step 3",
+				"key": "step3"
 			}
 		],
 		"userInterfaces": {

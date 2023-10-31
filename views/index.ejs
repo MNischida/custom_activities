@@ -40,16 +40,22 @@
   <div class="container pt-3">
     <h3>Ejemplo de Actividad Personalizada</h3>
     <hr>
-    <div id="message1">mensagem aqui1</div>
-    <hr>
     <div class="form-group step pt-1" id="step1">
-      <label>Field 1</label>
+      <label>Campo 1</label>
       <input type="text" class="form-control" id="field1" placeholder="Field 1">
     </div>
     <div class="form-group step pt-1" id="step2">
-      <label>Field 2</label>
+      <label>Campo 2</label>
       <input type="text" class="form-control" id="field2" placeholder="Field 2">
     </div>
+    <div class="form-group step pt-1" id="step3">
+        Seleccionar acción!
+        <select id="select">
+            <option value="">Select an option</option>
+            <option value="httprequest">HTTP Request</option>
+            <option value="sms">SMS</option>
+        </select>
+      </div>
   </div>
 </body>
 </html>
