@@ -153,7 +153,7 @@ server.post('/execute', function(req, res) {
 
     for (var i = 0; i < inArguments.length; i++) {
         if ("selected" in inArguments[i]) {
-            selectedValue = json[i].selected;
+            selectedValue = inArguments[i].selected;
         }
     }
 
