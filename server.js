@@ -117,44 +117,44 @@ server.post('/stop', function(req, res) {
  * 4xx - Contact is ejected from the Journey.
  * 5xx - Contact is ejected from the Journey.
  */
-server.post('/execute', function(req, res) {
-    console.log('debug: /execute');
+// server.post('/execute', function(req, res) {
+//     console.log('debug: /execute');
 
-    const request = req.body;
+//     const request = req.body;
 
-    const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
+//     const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
 
-    // Find the in argument
-    function getInArgument(k) {
-        if (request && request.inArguments) {
-            for (let i = 0; i < request.inArguments.length; i++) {
-                let e = request.inArguments[i];
-                if (k in e) {
-                    return e[k];
-                }
-            }
-        }
-    }
+//     // Find the in argument
+//     function getInArgument(k) {
+//         if (request && request.inArguments) {
+//             for (let i = 0; i < request.inArguments.length; i++) {
+//                 let e = request.inArguments[i];
+//                 if (k in e) {
+//                     return e[k];
+//                 }
+//             }
+//         }
+//     }
 
-    const payload = request;
+//     const payload = request;
 
-    console.log(JSON.stringify(payload));
+//     console.log(JSON.stringify(payload));
 
-    axios
-        .post(url, payload)
-        .then(resp => {
-            return res.status(200).json(resp.data);
-        })
-        .catch(error => {
-            console.error(error);
-            return res.status(500).json(error);
-        })
+//     axios
+//         .post(url, payload)
+//         .then(resp => {
+//             return res.status(200).json(resp.data);
+//         })
+//         .catch(error => {
+//             console.error(error);
+//             return res.status(500).json(error);
+//         })
 
 
     
 
-    return res.status(200).json({});
-});
+//     return res.status(200).json({});
+// });
 
 
 server.listen(port, '0.0.0.0', () => {
