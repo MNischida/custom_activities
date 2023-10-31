@@ -46,6 +46,7 @@ define([
               text: "done",
               enabled: Boolean(message),
             });
+        })
     }
 
     function initialize(data) {
