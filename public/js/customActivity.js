@@ -47,8 +47,10 @@ define([
         $("#message1").html('teste');
 
         if (!field1) {
-            onGotoStep(step);
-            $("#message1").html('1');
+            connection.trigger('updateButton', {
+                button: 'next',
+                enabled: Boolean(getField())
+            });
         }
     }
 
