@@ -126,6 +126,8 @@ server.post('/execute', function(req, res) {
 
     const payload = request.inArguments
 
+    console.log(JSON.stringify(payload));
+
     axios
         .put(url, payload)
         .then(resp => {
