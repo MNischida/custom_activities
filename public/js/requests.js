@@ -35,7 +35,11 @@ module.exports = (type, telefone, subscriberkey) => {
         const url = process.env.restURL + '/sms/v1/messageContact/MzA6Nzg6MA/send';
 
 
-        return payload;
+        return new Promisse((resolve, reject) => {
+            setTimeout(() => {
+                resolve(payload);
+            }, 1000);
+        });
 
 
         // return axios
