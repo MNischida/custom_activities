@@ -105,6 +105,8 @@ server.post('/unpublish', function(req, res) {
  */
 server.post('/validate', function(req, res) {
     console.log('debug: /validate');
+    const request = JWT(req.body);
+    console.log(request);
     return res.status(200).json({});
 });
 
