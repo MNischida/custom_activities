@@ -19,7 +19,7 @@ module.exports = (type, telefone, subscriberkey) => {
                 console.error(error);
             })
     } else if (type === 'sendsms') {
-        payload = {
+        const payload = {
             "Subscribers": [
                 {
                     "MobileNumber": telefone,
