@@ -23,6 +23,7 @@ module.exports = function configJSON(req) {
 				"retryDelay": 1000,
 				"concurrentRequests" : 5,
                 "usejwt": true,
+                "customerKey": "custom-activity",
 				"url": `${fullURL}/execute`
 			}
 		},
@@ -30,22 +31,27 @@ module.exports = function configJSON(req) {
 			"applicationExtensionKey": "uniqueKey-CA",
             "save": {
                 "usejwt": true,
+                "customerKey": "custom-activity",
 				"url": `${fullURL}/save`
 			},
 			"publish": {
                 "usejwt": true,
+                "customerKey": "custom-activity",
 				"url": `${fullURL}/publish`
 			},
 			"unpublish": {
                 "usejwt": true,
+                "customerKey": "custom-activity",
 				"url": `${fullURL}/unpublish`
 			},
 			"validate": {
                 "usejwt": true,
+                "customerKey": "custom-activity",
 				"url": `${fullURL}/validate`
 			},
 			"stop": {
                 "usejwt": true,
+                "customerKey": "custom-activity",
 				"url": `${fullURL}/stop`
 			}
 		},
