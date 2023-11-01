@@ -1,24 +1,24 @@
 const express = require('express')
 const server = express()
-const configJSON = require('./public/config/config-json.js')
+
 const port = process.env.PORT || 3333;
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const path = require('path')
 const JWT = require('./public/js/jwtDecoder.js')
+const configJSON = require('./public/config/config-json.js')
 require('dotenv').config()
 
 // Set engine
 server.set('view engine', 'ejs');
 
 // Static
-server.use(express.static('public'));
+server.use(express.static(path.join(__dirname, 'public')));
 
 // Body parser
-server.use(express.urlencoded({ extended: true }));
-server.use(express.json())
-server.use(bodyParser.raw({
-    type: 'application/jwt'
-}));
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.raw({type: 'application/jwt'}));
 
 server.get('/', (req, res) => {
     res.redirect('/index.html')

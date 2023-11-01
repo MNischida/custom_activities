@@ -22,35 +22,34 @@ module.exports = function configJSON(req) {
 				"retryCount": 0,
 				"retryDelay": 1000,
 				"concurrentRequests" : 5,
-                "usejwt": true,
+                "useJwt": true,
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/execute`
 			}
 		},
 		"configurationArguments": {
-			"applicationExtensionKey": "uniqueKey-CA",
             "save": {
-                "usejwt": true,
+                "useJwt": true,
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/save`
 			},
 			"publish": {
-                "usejwt": true,
+                "useJwt": true,
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/publish`
 			},
 			"unpublish": {
-                "usejwt": true,
+                "useJwt": true,
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/unpublish`
 			},
 			"validate": {
-                "usejwt": true,
+                "useJwt": true,
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/validate`
 			},
 			"stop": {
-                "usejwt": true,
+                "useJwt": true,
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/stop`
 			}
