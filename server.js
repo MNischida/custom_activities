@@ -188,17 +188,14 @@ server.post('/execute', function(req, res) {
         })
     } else if (selectedValue === 'sms') {
         apirequest('auth')
-        .then(token => {
-            console.log('Access Token: ' + token)
-            return tkn;
-        })
-        .catch(error => {
-            console.log(error);
-        })
-
-        apirequest('sendsms', telefone, subscriberkey, tkn)
-        .then(resp => {
-            console.log('Resposta: ' + resp)
+        .then(tkn => {
+            apirequest('sendsms', telefone, subscriberkey, tkn)
+            .then(resp => {
+                console.log('Resposta: ' + resp)
+            })
+            .catch(error => {
+                console.log(error);
+            })
         })
         .catch(error => {
             console.log(error);
