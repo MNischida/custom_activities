@@ -2,7 +2,10 @@ const express = require('express')
 const server = express()
 const configJSON = require('./public/config/config-json.js')
 const port = process.env.PORT || 3333;
-const axios = require('axios')
+const axios = require('axios');
+const bodyParser = require('body-parser');
+const JWT = require('./public/js/jwtDecoder.js')
+require('dotenv').config()
 
 // Set engine
 server.set('view engine', 'ejs');
@@ -13,6 +16,9 @@ server.use(express.static('public'));
 // Body parser
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json())
+server.use(bodyParser.raw({
+    type: 'application/jwt'
+}))
 
 server.get('/', (req, res) => {
     res.redirect('/index.html')
@@ -25,6 +31,11 @@ server.get('/index.html', (req, res) => {
 // Return JSON
 server.get('/config.json', (req, res) => {
     res.status(200).json(configJSON(req));
+});
+
+// Return JWT
+server.get('/jwt.js', (req, res) => {
+    res.status(200).json(JWT(req));
 });
 
 // customActivity
@@ -124,7 +135,7 @@ server.post('/stop', function(req, res) {
 server.post('/execute', function(req, res) {
     console.log('debug: /execute');
 
-    const request = req.body;
+    const request = JWT(req.body);
 
     const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
 
