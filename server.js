@@ -220,7 +220,7 @@ server.post('/execute', function(req, res) {
         .then(tkn => {
             apirequest('sendsms', telefone, subscriberkey, tkn)
             .then(resp => {
-                console.log('Resposta: ' + resp)
+                console.log('Resposta: ' + JSON.stringify(resp))
             })
             .catch(error => {
                 console.log(error);
