@@ -6,6 +6,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const path = require('path')
 const JWT = require('./public/js/jwtDecoder.js')
+const auth = require('./public/js/auth.js')
 const configJSON = require('./public/config/config-json.js')
 require('dotenv').config()
 
@@ -34,8 +35,14 @@ server.get('/config.json', (req, res) => {
 });
 
 // Return JWT
-server.get('/jwt.js', (req, res) => {
-    res.status(200).json(JWT(req));
+server.get('/auth', (req, res) => {
+    auth()
+        .then(token => {
+            console.log('Access Token: ' + token)
+        })
+        .catch(error => {
+            console.log(error);
+        })
 });
 
 // customActivity
@@ -188,7 +195,13 @@ server.post('/execute', function(req, res) {
             return res.status(500).json(error);
         })
     } else if (selectedValue === 'sms') {
-        console.log('SMS enviado');
+        auth()
+        .then(token => {
+            console.log('Access Token: ' + token)
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 });
 
