@@ -190,12 +190,6 @@ server.post('/execute', function(req, res) {
     } else if (selectedValue === 'sms') {
         console.log('SMS enviado');
     }
-    
-
-
-    
-
-    return res.status(200).json({});
 });
 
 
