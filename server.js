@@ -18,7 +18,7 @@ server.use(express.urlencoded({ extended: true }));
 server.use(express.json())
 server.use(bodyParser.raw({
     type: 'application/jwt'
-}))
+}));
 
 server.get('/', (req, res) => {
     res.redirect('/index.html')

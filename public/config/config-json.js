@@ -19,7 +19,7 @@ module.exports = function configJSON(req) {
 				}],
 				"outArguments": [],
 				"timeout": 20000,
-				"retryCount": 1,
+				"retryCount": 0,
 				"retryDelay": 1000,
 				"concurrentRequests" : 5,
                 "usejwt": true,
