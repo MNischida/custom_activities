@@ -35,8 +35,37 @@ server.get('/config.json', (req, res) => {
 });
 
 // Return JWT
-server.get('/auth', (req, res) => {
+server.get('/teste', (req, res) => {
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tkn
+    }
+    const payload = {
+        "Subscribers": [
+            {
+                "MobileNumber": telefone,
+                "SubscriberKey": subscriberkey
+            }
+        ],
+        "Subscribe": true,
+        "Resubscribe": true,
+        "keyword": "LANISCHIDA",
+        "SendTime": "2012-10-05 20:01"
+    }
 
+    const url = process.env.restURL + '/sms/v1/messageContact/MzA6Nzg6MA/send';
+
+
+    return axios
+        .post(url, payload, {
+            headers: headers
+        })
+        .then(resp => {
+            return resp.data;
+        })
+        .catch(error => {
+            console.error(error);
+        })
 });
 
 // customActivity

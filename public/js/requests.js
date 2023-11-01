@@ -21,7 +21,7 @@ module.exports = (type, telefone, subscriberkey, tkn) => {
     } else if (type === 'sendsms') {
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer' + tkn
+            'Authorization': 'Bearer ' + tkn
         }
 
         const payload = {
