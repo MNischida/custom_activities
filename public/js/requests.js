@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports = (type, telefone, subscriberkey) => {
+module.exports = (type, telefone, subscriberkey, tkn) => {
     if (type === 'auth') {
         payload = {
             "grant_type" : "client_credentials",
@@ -19,6 +19,11 @@ module.exports = (type, telefone, subscriberkey) => {
                 console.error(error);
             })
     } else if (type === 'sendsms') {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer' + tkn
+        }
+
         const payload = {
             "Subscribers": [
                 {
@@ -36,7 +41,9 @@ module.exports = (type, telefone, subscriberkey) => {
 
 
         return axios
-            .post(url, payload)
+            .post(url, payload, {
+                headers: headers
+            })
             .then(resp => {
                 return resp.data;
             })
