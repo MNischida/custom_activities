@@ -6,7 +6,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const path = require('path')
 const JWT = require('./public/js/jwtDecoder.js')
-const auth = require('./public/js/auth.js')
+const apirequest = require('./public/js/requests.js')
 const configJSON = require('./public/config/config-json.js')
 require('dotenv').config()
 
@@ -36,13 +36,7 @@ server.get('/config.json', (req, res) => {
 
 // Return JWT
 server.get('/auth', (req, res) => {
-    auth()
-        .then(token => {
-            console.log('Access Token: ' + token)
-        })
-        .catch(error => {
-            console.log(error);
-        })
+
 });
 
 // customActivity
@@ -112,9 +106,6 @@ server.post('/unpublish', function(req, res) {
  */
 server.post('/validate', function(req, res) {
     console.log('debug: /validate');
-    const request = JWT(req.body);
-    console.log('Com JWT: ' + request);
-    console.log('Sem JWT: ' + req.body)
     return res.status(200).json({});
 });
 
@@ -147,8 +138,6 @@ server.post('/execute', function(req, res) {
 
     const request = JWT(req.body);
 
-    console.log(JSON.stringify(request));
-
     const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
 
     // Find the in argument
@@ -170,7 +159,6 @@ server.post('/execute', function(req, res) {
 
     const inArguments = request.inArguments
 
-    console.log('Request InArgument: ' + JSON.stringify(request.inArguments));
 
     var selectedValue = null;
 
@@ -195,9 +183,17 @@ server.post('/execute', function(req, res) {
             return res.status(500).json(error);
         })
     } else if (selectedValue === 'sms') {
-        auth()
+        apirequest('auth')
         .then(token => {
             console.log('Access Token: ' + token)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+        apirequest('sendsms')
+        .then(resp => {
+            console.log('Resposta: ' + resp)
         })
         .catch(error => {
             console.log(error);
