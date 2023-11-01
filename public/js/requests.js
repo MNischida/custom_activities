@@ -35,7 +35,7 @@ module.exports = (type, telefone, subscriberkey) => {
         const url = process.env.restURL + '/sms/v1/messageContact/MzA6Nzg6MA/send';
 
 
-        console.log(payload);
+        return payload;
 
 
         // return axios

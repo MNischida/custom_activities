@@ -173,7 +173,6 @@ server.post('/execute', function(req, res) {
     }
 
     console.log('valor selecionado: ' + selectedValue);
-    console.log('subscriberkey: ' + subscriberkey);
 
     if (selectedValue === 'httprequest') {
         axios
