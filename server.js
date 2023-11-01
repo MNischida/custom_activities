@@ -63,6 +63,8 @@ server.get('/customActivity.js', (req, res) => {
  */
 server.post('/save', function(req, res) {
     console.log('debug: /save');
+    const request = JWT(req.body);
+    console.log(request);
     return res.status(200).json({});
 });
 
