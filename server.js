@@ -137,6 +137,8 @@ server.post('/execute', function(req, res) {
 
     const request = JWT(req.body);
 
+    console.log(JSON.stringify(request));
+
     const url = 'https://eo8qif9pyzfou2p.m.pipedream.net'
 
     // Find the in argument
