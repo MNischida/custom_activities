@@ -36,6 +36,8 @@ module.exports = (type, telefone, subscriberkey, tkn) => {
             "keyword": "LANISCHIDA",
             "SendTime": "2012-10-05 20:01"
         }
+
+        console.log('Payload SMS: ' + payload);
     
         const url = process.env.restURL + '/sms/v1/messageContact/MzA6Nzg6MA/send';
 
