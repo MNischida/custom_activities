@@ -165,6 +165,10 @@ server.post('/execute', function(req, res) {
     for (var i = 0; i < inArguments.length; i++) {
         if ("selected" in inArguments[i]) {
             selectedValue = inArguments[i].selected;
+        } else if ("telefone" in inArguments[i]) {
+            telefone = inArguments[i].telefone;
+        } else if ("subscriberkey" in inArguments[i]) {
+            subscriberkey = inArguments[i].subscriberkey;
         }
     }
 
@@ -191,7 +195,7 @@ server.post('/execute', function(req, res) {
             console.log(error);
         })
 
-        apirequest('sendsms')
+        apirequest('sendsms', telefone, subscriberkey)
         .then(resp => {
             console.log('Resposta: ' + resp)
         })

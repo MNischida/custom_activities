@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports = (type) => {
+module.exports = (type, telefone, subscriberkey) => {
     if (type === 'auth') {
         payload = {
             "grant_type" : "client_credentials",
@@ -22,8 +22,8 @@ module.exports = (type) => {
         payload = {
             "Subscribers": [
                 {
-                    "MobileNumber": '{{Event.' + eventDefinitionKey + '.Telefone}}',
-                    "SubscriberKey": '{{Contact.Key}}'
+                    "MobileNumber": telefone,
+                    "SubscriberKey": subscriberkey
                 }
             ],
             "Subscribe": true,

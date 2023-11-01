@@ -146,7 +146,8 @@ define([
                 {telefone: '{{Event.' + eventDefinitionKey + '.Telefone}}'},
                 {field1: $('#field1').val()},
                 {field2: $('#field2').val()},
-                {selected: getMessage()}
+                {selected: getMessage()},
+                {subscriberkey: '{{Contact.Key}}'}
             ]
 
             for (const obj1 of objects) {
