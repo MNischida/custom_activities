@@ -38,11 +38,6 @@ module.exports = function configJSON(req) {
                 "customerKey": "custom-activity",
 				"url": `${fullURL}/publish`
 			},
-			"unpublish": {
-                "useJwt": true,
-                "customerKey": "custom-activity",
-				"url": `${fullURL}/unpublish`
-			},
 			"validate": {
                 "useJwt": true,
                 "customerKey": "custom-activity",
