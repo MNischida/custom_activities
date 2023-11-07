@@ -22,9 +22,6 @@ module.exports = function configJSON(req) {
 				}],
 				"outArguments": [{
 					"response": "null"
-				},
-				{
-					"tokenId": "null"
 				}],
 				"timeout": 100000,
 				"retryCount": 5,
@@ -85,12 +82,6 @@ module.exports = function configJSON(req) {
 					"inArguments": [],
 					"outArguments": [{
 						"response": {
-							"dataType": "Text",
-							"access": "visible",
-							"direction": "out",
-							"isNullable": true
-						},
-						"tokenId": {
 							"dataType": "Text",
 							"access": "visible",
 							"direction": "out",
