@@ -190,6 +190,8 @@ server.post('/execute', function(req, res) {
             .then(resp => {
                 console.log('Resposta: ' + JSON.stringify(resp))
                 outArguments = JSON.stringify(resp);
+
+                console.log(outArguments);
             })
             .catch(error => {
                 console.log(error);
