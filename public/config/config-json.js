@@ -5,7 +5,8 @@ module.exports = function configJSON(req) {
 		"workflowApiVersion": "1.1",
 		"metaData": {
 			"icon": "../images/custom-activity.png",
-			"category": "message"
+			"category": "message",
+			"configOnDrop": true
 		},
 		"type": "Rest",
 		"lang": {
@@ -16,6 +17,8 @@ module.exports = function configJSON(req) {
 			"execute": {
 				"inArguments": [{
 					"myInArgument": "inArgument coming from iframe"
+				},{
+					"canal": "SMS"
 				}],
 				"outArguments": [],
 				"timeout": 20000,
@@ -28,6 +31,7 @@ module.exports = function configJSON(req) {
 			}
 		},
 		"configurationArguments": {
+			"applicationExtensionKey": "demo-custom-activity",
             "save": {
                 "useJwt": true,
                 "customerKey": "custom-activity",
