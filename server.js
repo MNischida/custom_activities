@@ -188,8 +188,9 @@ server.post('/execute', function(req, res) {
         .then(tkn => {
             apirequest('sendsms', telefone, subscriberkey, tkn)
             .then(resp => {
+                console.log('RespostaData: ' + JSON.stringify(resp.data))
                 console.log('Resposta: ' + JSON.stringify(resp))
-                console.log('Resposta: ' + resp.tokenId)
+                console.log('RespostaToken: ' + resp.tokenId)
 
                 console.log("Dados de outArguments: " + JSON.stringify(request.outArguments));
                 return res.status(200).json(resp.data);
