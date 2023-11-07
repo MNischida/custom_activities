@@ -193,7 +193,7 @@ server.post('/execute', function(req, res) {
                 console.log('RespostaToken: ' + resp.tokenId)
 
                 console.log("Dados de outArguments: " + JSON.stringify(request.outArguments));
-                return res.status(200).json(resp.data);
+                return res.status(200).json(resp);
             })
             .catch(error => {
                 console.log(error);
