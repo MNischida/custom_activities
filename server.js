@@ -174,7 +174,8 @@ server.post('/execute', function(req, res) {
     if (selectedValue === 'httprequest') {
         axios
         .post(url, payload, {
-            headers: headers
+            headers: headers,
+            timeout: 20000
         })
         .then(resp => {
             return res.status(200).json(resp.data);
