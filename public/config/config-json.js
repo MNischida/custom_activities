@@ -2,6 +2,7 @@ module.exports = function configJSON(req) {
     var fullURL = `https://${req.get('host')}`
 
 	return {
+		"key": "custom-ca",
 		"workflowApiVersion": "1.1",
 		"metaData": {
 			"icon": "../images/custom-activity.png",
