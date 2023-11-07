@@ -24,7 +24,7 @@ module.exports = function configJSON(req) {
 					"response": "null"
 				},
 				{
-					"tokenId": null
+					"tokenId": "null"
 				}],
 				"timeout": 100000,
 				"retryCount": 5,
