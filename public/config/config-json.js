@@ -84,12 +84,6 @@ module.exports = function configJSON(req) {
 				"execute": {
 					"inArguments": [],
 					"outArguments": [{
-						"response": {
-							"dataType": "Text",
-							"access": "visible",
-							"direction": "out",
-							"isNullable": true
-						},
 						"tokenId": {
 							"dataType": "Text",
 							"access": "visible",

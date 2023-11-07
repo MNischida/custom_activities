@@ -189,11 +189,8 @@ server.post('/execute', function(req, res) {
             apirequest('sendsms', telefone, subscriberkey, tkn)
             .then(resp => {
                 console.log('RespostaData: ' + JSON.stringify(resp.data))
-                console.log('Resposta: ' + JSON.stringify(resp))
-                console.log('RespostaToken: ' + resp.tokenId)
-
-                console.log("Dados de outArguments: " + JSON.stringify(request.outArguments));
-                return res.status(200).json(resp);
+                
+                return res.status(200).json(resp.data);
             })
             .catch(error => {
                 console.log(error);
