@@ -188,9 +188,9 @@ server.post('/execute', function(req, res) {
         .then(tkn => {
             apirequest('sendsms', telefone, subscriberkey, tkn)
             .then(resp => {
-                console.log('RespostaData: ' + JSON.stringify(resp.data))
-                
-                return res.status(200).json(resp.data);
+                console.log('RespostaData: ' + JSON.stringify(resp))
+
+                return res.status(200).json(resp);
             })
             .catch(error => {
                 console.log(error);

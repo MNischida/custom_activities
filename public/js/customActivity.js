@@ -60,7 +60,6 @@ define([
         field2 = $("#field2").val(payload["arguments"].execute.inArguments[3].field2);
         selected = $("#select").val(payload["arguments"].execute.inArguments[4].selected);
 
-
         if (field1) {
             connection.trigger('updateButton', {
                 button: 'next',
