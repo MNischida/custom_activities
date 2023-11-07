@@ -21,10 +21,10 @@ module.exports = function configJSON(req) {
 					"canal": "SMS"
 				}],
 				"outArguments": [{
-					"tokenId": ""
+					"tokenId": null
 				},
 				{
-					"response": ""
+					"response": null
 				}],
 				"timeout": 100000,
 				"retryCount": 5,
