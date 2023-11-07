@@ -84,8 +84,13 @@ module.exports = function configJSON(req) {
 					"outArguments": [{
 						"resposta": {
 							"dataType": "Text",
-							"isNullable": false,
-							"direction": "Out"
+							"access": "visible",
+							"direction": "out"
+						},
+						"tokenId": {
+							"dataType": "Text",
+							"access": "visible",
+							"direction": "out"
 						}
 					}]
 				}
