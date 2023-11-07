@@ -193,6 +193,7 @@ server.post('/execute', function(req, res) {
                 outArguments = JSON.stringify(resp);
 
                 console.log("Dados de outArguments: " + outArguments);
+                return res.status(200).json(resp.data);
             })
             .catch(error => {
                 console.log(error);
