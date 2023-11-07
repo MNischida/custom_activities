@@ -191,7 +191,7 @@ server.post('/execute', function(req, res) {
                 console.log('Resposta: ' + JSON.stringify(resp))
                 outArguments = JSON.stringify(resp);
 
-                console.log(outArguments);
+                console.log("Dados de outArguments: " + outArguments);
             })
             .catch(error => {
                 console.log(error);
