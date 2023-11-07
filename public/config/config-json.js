@@ -20,9 +20,7 @@ module.exports = function configJSON(req) {
 				},{
 					"canal": "SMS"
 				}],
-				"outArguments": [{
-					"response": "null"
-				}],
+				"outArguments": [],
 				"timeout": 100000,
 				"retryCount": 5,
 				"retryDelay": 1000,
@@ -82,6 +80,12 @@ module.exports = function configJSON(req) {
 					"inArguments": [],
 					"outArguments": [{
 						"response": {
+							"dataType": "Text",
+							"access": "visible",
+							"direction": "out",
+							"isNullable": true
+						},
+						"tokenId": {
 							"dataType": "Text",
 							"access": "visible",
 							"direction": "out",
