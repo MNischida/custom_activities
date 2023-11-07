@@ -153,8 +153,9 @@ server.post('/execute', function(req, res) {
         'Content-Type': 'application/json'
     }
 
-    const inArguments = request.inArguments
+    const inArguments = request.inArguments;
 
+    const outArguments = request.outArguments[0].resposta;
 
     var selectedValue = null;
 
@@ -188,6 +189,7 @@ server.post('/execute', function(req, res) {
             apirequest('sendsms', telefone, subscriberkey, tkn)
             .then(resp => {
                 console.log('Resposta: ' + JSON.stringify(resp))
+                outArguments = JSON.stringify(resp);
             })
             .catch(error => {
                 console.log(error);
