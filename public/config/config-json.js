@@ -21,7 +21,7 @@ module.exports = function configJSON(req) {
 					"canal": "SMS"
 				}],
 				"outArguments": [{
-					"resposta": null
+					"resposta": "null"
 				}],
 				"timeout": 20000,
 				"retryCount": 0,
