@@ -155,8 +155,6 @@ server.post('/execute', function(req, res) {
 
     const inArguments = request.inArguments;
 
-    let outArguments = request.outArguments[0].response;
-
     var selectedValue = null;
 
     for (var i = 0; i < inArguments.length; i++) {
@@ -192,9 +190,8 @@ server.post('/execute', function(req, res) {
             .then(resp => {
                 console.log('Resposta: ' + JSON.stringify(resp))
                 console.log('Resposta: ' + resp.tokenId)
-                outArguments = JSON.stringify(resp);
 
-                console.log("Dados de outArguments: " + outArguments);
+                console.log("Dados de outArguments: " + JSON.stringify(request.outArguments));
                 return res.status(200).json(resp.data);
             })
             .catch(error => {
