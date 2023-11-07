@@ -155,7 +155,7 @@ server.post('/execute', function(req, res) {
 
     const inArguments = request.inArguments;
 
-    const outArguments = request.outArguments[0].resposta;
+    let outArguments = request.outArguments[0].resposta;
 
     var selectedValue = null;
 
