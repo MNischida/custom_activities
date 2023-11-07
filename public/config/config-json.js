@@ -27,7 +27,7 @@ module.exports = function configJSON(req) {
 					"tokenId": null
 				}],
 				"timeout": 20000,
-				"retryCount": 0,
+				"retryCount": 2,
 				"retryDelay": 1000,
 				"concurrentRequests" : 5,
                 "useJwt": true,
