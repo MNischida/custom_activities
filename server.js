@@ -178,6 +178,7 @@ server.post('/execute', function(req, res) {
             timeout: 20000
         })
         .then(resp => {
+            console.log(JSON.stringify(resp.data));
             return res.status(200).json(resp.data);
         })
         .catch(error => {
