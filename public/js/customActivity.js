@@ -19,6 +19,8 @@ define([
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
+    connection.on('requestedInteractionDefaults', requestedInteractionDefaults);
+    connection.on('requestedInteraction', requestedInteraction);
 
     connection.on('clickedNext', onClickedNext);
     connection.on('clickedBack', onClickedBack);
@@ -26,6 +28,12 @@ define([
 
     function onRender() {
         connection.trigger('ready');
+
+        // Tell the parent iFrame we want the Interaction Defaults
+        connection.trigger('requestInteractionDefaults');
+
+        // Tell the parent iFrame we want the Interaction
+        connection.trigger('requestInteraction');
 
         $('#field1').change(function () {
             connection.trigger('updateButton', {
@@ -47,6 +55,71 @@ define([
               enabled: Boolean(message),
             });
         })
+    }
+
+    function requestedInteractionDefaults(payload) {
+        console.log('-------- requestedInteractionDefaults --------');
+        console.log('payload\n', JSON.stringify(payload, null, 4));
+        console.log('requestInteraction', payload);
+        console.log('---------------------------------------------');
+    }
+
+    function requestedInteraction(payload) {
+        console.log('-------- requestedInteraction --------');
+        console.log('payload\n', JSON.stringify(payload, null, 4));
+        console.log('requestInteraction', payload);
+        console.log('--------------------------------------');
+    
+        let selectedValue;
+    
+        // determine the selected item (if there is one)
+        if(activity.arguments.execute.inArguments) {
+            const existingSelection = activity.arguments.execute.inArguments[0].discount ?? activity.arguments.execute.inArguments[0].discountCode;
+    
+            if(existingSelection.split('.').length == 3) {
+                selectedValue = existingSelection.split('.')[1];
+            }
+        }
+    
+        // populate the select dropdown.
+        const selectElement = document.getElementById('discount-code');
+    
+        payload.activities.forEach(a => {
+            if(a.schema && a.schema.arguments && a.schema.arguments.execute &&
+                a.schema.arguments.execute.outArguments && a.schema.arguments.execute.outArguments.length > 0) {
+                a.schema.arguments.execute.outArguments.forEach(inArg => {
+                    if(inArg.discountCode) {
+                        let option = document.createElement("option");
+                        option.text = `${a.name} - (${a.key})`;
+                        option.value = a.key;
+                        selectElement.add(option);
+                    }
+                });
+            }
+        });
+    
+        // Display the warning if there is an issue, otherwise, display the
+        if(selectElement.childElementCount == 0) {
+            document.getElementById('main-form').style.display = 'hidden';
+            document.getElementById('warning').style.display = 'block';
+        } else {
+            document.getElementById('main-form').style.display = 'block';
+            document.getElementById('warning').style.display = 'hidden';
+    
+            // if we have a previously selected value, repopulate that value.
+            if(selectedValue) {
+                const selectOption = selectElement.querySelector(`[value='${selectedValue}']`);
+    
+                if (selectOption) {
+                    selectOption.selected = true;
+                } else {
+                    console.log('Could not select value from list', `[value='${selectedValue}]'`);
+                }
+            }
+    
+            // let journey builder know the activity has changes
+            connection.trigger('setActivityDirtyState', true);
+        }
     }
 
     function initialize(data) {
